@@ -20,7 +20,7 @@ namespace MultiPayloadHandling
             var typesWithMyAttribute =
                 from a in AppDomain.CurrentDomain.GetAssemblies()
                 from t in a.GetTypes()
-                let attribute = t.GetCustomAttribute<FruitSreviceAttribute>(true)
+                let attribute = t.GetCustomAttribute<FruitHandlerAttribute>(true)
                 where attribute != null && t.IsAssignableTo(fruitHandlerType)
                 select new { Type = t, Attribute = attribute, Interface = t.GetInterfaces().Where(it =>
                 {
@@ -28,7 +28,7 @@ namespace MultiPayloadHandling
                     return ok;
                 }).FirstOrDefault() };
             
-            var fruitTypeMap = new FruitServiceTypeMap();
+            var fruitTypeMap = new FruitHandlerTypeMap();
             foreach (var type in typesWithMyAttribute) 
             {
                 fruitTypeMap[type.Attribute.FruitType] = type.Interface;

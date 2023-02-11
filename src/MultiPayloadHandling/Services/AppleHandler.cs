@@ -1,6 +1,6 @@
 namespace MultiPayloadHandling.Services;
 
-[FruitSrevice(FruitType.Apple)]
+[FruitHandler(FruitType.Apple)]
 public class AppleHandler : IAppleHandler
 {
     private readonly IAppleJuiceHandler appleJuiceHandler;

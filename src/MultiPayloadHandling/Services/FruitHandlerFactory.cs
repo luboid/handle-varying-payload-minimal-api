@@ -3,9 +3,9 @@ namespace MultiPayloadHandling.Interfaces;
 public class FruitHandlerFactory : IFruitHandlerFactory
 {
     private readonly IServiceProvider serviceProvider;
-    private readonly FruitServiceTypeMap fruitTypeMap;
+    private readonly FruitHandlerTypeMap fruitTypeMap;
 
-    public FruitHandlerFactory(IServiceProvider serviceProvider, FruitServiceTypeMap fruitTypeMap)
+    public FruitHandlerFactory(IServiceProvider serviceProvider, FruitHandlerTypeMap fruitTypeMap)
     {
         this.serviceProvider = serviceProvider;
         this.fruitTypeMap = fruitTypeMap;

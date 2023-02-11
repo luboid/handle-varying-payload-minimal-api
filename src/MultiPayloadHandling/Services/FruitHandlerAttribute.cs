@@ -1,9 +1,9 @@
 namespace MultiPayloadHandling.Services;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class FruitSreviceAttribute : Attribute
+public class FruitHandlerAttribute : Attribute
 {
-    public FruitSreviceAttribute(FruitType fruitType)
+    public FruitHandlerAttribute(FruitType fruitType)
     {
         FruitType = fruitType;
     }
