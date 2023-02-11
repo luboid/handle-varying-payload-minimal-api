@@ -1,6 +1,6 @@
 namespace MultiPayloadHandling.Models;
 
-public class PearPayload : Payload
+public class PearPayload : FruitPayload
 {
     public PearPayload()
     {

@@ -1,6 +1,6 @@
 namespace MultiPayloadHandling.Models;
 
-public class ApplePayload : Payload
+public class ApplePayload : FruitPayload
 {
     public ApplePayload()
     {

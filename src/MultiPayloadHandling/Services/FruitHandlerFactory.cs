@@ -18,6 +18,6 @@ public class FruitHandlerFactory : IFruitHandlerFactory
             return (IFruitHandler)serviceProvider.GetRequiredService(handler);
         }
 
-        throw new ArgumentOutOfRangeException(nameof(handler));
+        throw new ArgumentOutOfRangeException(nameof(fruitType));
     }
 }

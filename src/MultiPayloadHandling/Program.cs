@@ -62,7 +62,7 @@ namespace MultiPayloadHandling
             app.UseAuthorization();
 
             app.AddWetherForecastEndpoint();
-            app.AddPayloadEndpoint();
+            app.AddFruitHandlerEndpoint();
 
             app.Run();
         }

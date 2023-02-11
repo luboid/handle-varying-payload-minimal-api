@@ -1,17 +1,17 @@
 namespace MultiPayloadHandling.Endpoints;
 
-public static class PayloadEndpoint
+public static class FruitHandlerEndpoint
 {
-    public static void AddPayloadEndpoint(this WebApplication app)
+    public static void AddFruitHandlerEndpoint(this WebApplication app)
     {
-        app.MapPost("/CreatePayload", Handler)
-        .WithName("CreatePayload")
+        app.MapPost("/FruitHandler", FruitHandler)
+        .WithName("FruitHandler")
         .WithOpenApi()
-        .Accepts<Payload>("application/json");
+        .Accepts<FruitPayload>("application/json");
     }
 
-    public static async Task<IResult> Handler(
-        Payload payload, 
+    public static async Task<IResult> FruitHandler(
+        FruitPayload payload, 
         [FromServices] IFruitHandlerFactory fruitHandlerFactory, 
         CancellationToken cancellationToken)
     {

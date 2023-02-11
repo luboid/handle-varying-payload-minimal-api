@@ -10,7 +10,7 @@ public class AppleHandler : IAppleHandler
         this.appleJuiceHandler = appleJuiceHandler;
     }
 
-    public async Task<string> HandleAsync(Payload payload, CancellationToken cancellationToken = default)
+    public async Task<string> HandleAsync(FruitPayload payload, CancellationToken cancellationToken = default)
     {
         await appleJuiceHandler.HandleAsync(payload, cancellationToken);
         return $"Juice of {(payload as ApplePayload)?.AppleName ?? payload.GetType().Name}";
