@@ -28,7 +28,7 @@ namespace MultiPayloadHandling
                     return ok;
                 }).FirstOrDefault() };
             
-            var fruitTypeMap = new FruitTypeMap();
+            var fruitTypeMap = new FruitServiceTypeMap();
             foreach (var type in typesWithMyAttribute) 
             {
                 fruitTypeMap[type.Attribute.FruitType] = type.Interface;
