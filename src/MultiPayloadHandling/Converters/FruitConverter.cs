@@ -27,6 +27,6 @@ public class FruitConverter : JsonConverter<Fruit>
 
     public override void Write(Utf8JsonWriter writer, Fruit value, JsonSerializerOptions options)
     {
-        JsonSerializer.Serialize(writer, value.GetType(), options);
+        JsonSerializer.Serialize(writer, value, value.GetType(), options);
     }
 }
