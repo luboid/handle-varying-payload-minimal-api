@@ -2,7 +2,7 @@ namespace MultiPayloadHandling.Models;
 
 public enum FruitType
 {
-    Unkown,
+    Unknown,
     Apple,
     Pear,
 }
