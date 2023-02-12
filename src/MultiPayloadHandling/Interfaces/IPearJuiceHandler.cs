@@ -2,5 +2,5 @@ namespace MultiPayloadHandling.Interfaces;
 
 public interface IPearJuiceHandler
 {
-    Task HandleAsync(FruitPayload payload, CancellationToken cancellationToken = default);
+    Task HandleAsync(Fruit payload, CancellationToken cancellationToken = default);
 }

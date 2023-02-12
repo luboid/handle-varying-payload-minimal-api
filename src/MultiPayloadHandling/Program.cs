@@ -1,6 +1,6 @@
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Reflection;
-using System.Text.Json.Serialization;
+using FluentValidation;
+using MultiPayloadHandling.Attributes;
+using MultiPayloadHandling.Filters;
 
 namespace MultiPayloadHandling
 {
@@ -10,10 +10,19 @@ namespace MultiPayloadHandling
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.Configure<JsonOptions>(options =>
+            // same as builder.Services.ConfigureHttpJsonOptions
+            builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+            {
+                options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.SerializerOptions.Converters.Add(new FruitConverter());
+            });
+
+            builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
             {
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.JsonSerializerOptions.Converters.Add(new FruitConverter());
             });
 
             var fruitHandlerType = typeof(IFruitHandler);
@@ -41,6 +50,8 @@ namespace MultiPayloadHandling
             builder.Services.AddScoped<IPearJuiceHandler, PearJuiceHandler>();
             builder.Services.AddScoped<IAppleJuiceHandler, AppleJuiceHandler>();
 
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
             // Add services to the container.
             builder.Services.AddAuthorization();
 
@@ -62,7 +73,11 @@ namespace MultiPayloadHandling
             app.UseAuthorization();
 
             app.AddWetherForecastEndpoint();
-            app.AddFruitHandlerEndpoint();
+
+            var root = app.MapGroup("");
+            root.AddEndpointFilterFactory(ValidationFilter.ValidationFilterFactory);
+
+            root.AddFruitHandlerEndpoint();
 
             app.Run();
         }

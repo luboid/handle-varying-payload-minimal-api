@@ -1,11 +1,8 @@
 namespace MultiPayloadHandling.Models;
 
-public class ApplePayload : FruitPayload
+public class Apple : Fruit
 {
-    public ApplePayload()
-    {
-        FruitType = FruitType.Apple;
-    }
+    public override FruitType Type { get; } = FruitType.Apple;
 
     public int AppleAttribute { get; set; }
 

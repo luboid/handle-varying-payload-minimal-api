@@ -1,4 +1,4 @@
-namespace MultiPayloadHandling.Services;
+namespace MultiPayloadHandling.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class FruitHandlerAttribute : Attribute

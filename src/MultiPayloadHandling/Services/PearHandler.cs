@@ -10,9 +10,9 @@ public class PearHandler : IPearHandler
         this.pearJuiceHandler = pearJuiceHandler;
     }
 
-    public async Task<string> HandleAsync(FruitPayload payload, CancellationToken cancellationToken = default)
+    public async Task<string> HandleAsync(Fruit payload, CancellationToken cancellationToken = default)
     {
         await pearJuiceHandler.HandleAsync(payload, cancellationToken);
-        return $"Juice of {(payload as PearPayload)?.PearName ?? payload.GetType().Name}";
+        return $"Juice of Pear: {(payload as Pear)?.PearName ?? payload.GetType().Name}";
     }
 }
