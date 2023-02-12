@@ -2,6 +2,6 @@
 Varying Payload Minimal API
 
 - Minimal API
-- Polymorfic serialization/deserialization
+- Polymorphic serialization/deserialization
 - FluentValidation
 - Handle request with factory pattern
